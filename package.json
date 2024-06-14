@@ -7,11 +7,22 @@
     "ios": "react-native run-ios",
     "lint": "eslint .",
     "start": "react-native start",
-    "test": "jest"
+    "test": "jest",
+    "start:ios": "npm run ios -- --simulator='iPhone 15 Pro (D3B00351-A941-4218-A4DC-197A8FF5772E)'"
   },
   "dependencies": {
+    "@react-navigation/bottom-tabs": "^5.8.0",
+    "@react-navigation/native": "^5.8.10",
+    "@react-navigation/stack": "^5.12.8",
     "react": "18.2.0",
-    "react-native": "0.74.2"
+    "react-native": "0.74.2",
+    "react-native-appsflyer": "^6.13.1",
+    "react-native-config": "^1.5.1",
+    "react-native-gesture-handler": "^1.9.0",
+    "react-native-reanimated": "^3.12.0",
+    "react-native-safe-area-context": "^4.10.4",
+    "react-native-screens": "^3.31.1",
+    "react-native-vector-icons": "^10.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

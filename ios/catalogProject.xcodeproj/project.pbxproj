@@ -28,7 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		008D648B27703AC1154F846A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = catalogProject/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		008D648B27703AC1154F846A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = catalogProject/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		00E356EE1AD99517003FC87E /* catalogProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = catalogProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* catalogProjectTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = catalogProjectTests.m; sourceTree = "<group>"; };
@@ -40,6 +40,7 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = catalogProject/main.m; sourceTree = "<group>"; };
 		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = catalogProject/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		19F6CBCC0A4E27FBF8BF4A61 /* libPods-catalogProject-catalogProjectTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-catalogProject-catalogProjectTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		226ED9E62C1B833C00477526 /* catalogProject.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = catalogProject.entitlements; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-catalogProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-catalogProject.debug.xcconfig"; path = "Target Support Files/Pods-catalogProject/Pods-catalogProject.debug.xcconfig"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-catalogProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-catalogProject.release.xcconfig"; path = "Target Support Files/Pods-catalogProject/Pods-catalogProject.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-catalogProject-catalogProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-catalogProject-catalogProjectTests.debug.xcconfig"; path = "Target Support Files/Pods-catalogProject-catalogProjectTests/Pods-catalogProject-catalogProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -97,6 +98,7 @@
 				13B07FB71A68108700A75B9A /* main.m */,
 				13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */,
 				008D648B27703AC1154F846A /* PrivacyInfo.xcprivacy */,
+				226ED9E62C1B833C00477526 /* catalogProject.entitlements */,
 			);
 			name = catalogProject;
 			sourceTree = "<group>";
@@ -211,7 +213,7 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						LastSwiftMigration = 1120;
+						LastSwiftMigration = 1540;
 					};
 				};
 			};
