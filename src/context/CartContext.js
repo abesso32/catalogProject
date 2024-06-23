@@ -52,6 +52,10 @@ export const CartProvider = ({children}) => {
     setTotalPrice(total);
   };
 
+  const clearCart = () => {
+    setProducts([]);
+  };
+
   useEffect(() => {
     totalSum();
   }, [products]);
@@ -63,6 +67,7 @@ export const CartProvider = ({children}) => {
     increasteQuantityProduct,
     decreaseQuantityProduct,
     removeProduct,
+    clearCart,
   };
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;

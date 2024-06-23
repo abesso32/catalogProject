@@ -1,6 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
 
     <application
       android:name=".MainApplication"
@@ -28,7 +30,7 @@
             <category android:name="android.intent.category.BROWSABLE" />
             <data
                 android:host="onelink-basic-app.onelink.me"
-                android:pathPrefix="/QDoA"
+                android:pathPrefix="/your_path_prefix"
                 android:scheme="https" />
         </intent-filter>
         

@@ -4,48 +4,26 @@ import {Text, StyleSheet, View, Image} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import COLORS from '../../consts/colors';
 import {PrimaryButton} from '../components/Button';
-import {AFInit, AFLogEvent, AF_clickGetStarted} from '../components/Appsflyer';
-import appsFlyer from 'react-native-appsflyer';
+import {
+  AFInit,
+  AFLogEvent,
+  AF_clickGetStarted,
+  deepLinkListener,
+  installConversionListener,
+} from '../components/Appsflyer';
 
 const OnBoardScreen = ({navigation}) => {
   useEffect(() => {
-    const AFGCDListener = appsFlyer.onInstallConversionData(res => {
-      if (JSON.parse(res.data.is_first_launch) == true) {
-        if (res.data.af_status === 'Non-organic') {
-          var media_source = res.data.media_source;
-          var campaign = res.data.campaign;
-          console.log(
-            'This is first launch and a Non-Organic install. Media source: ' +
-              media_source +
-              ' Campaign: ' +
-              campaign,
-          );
-        } else if (res.data.af_status === 'Organic') {
-          console.log('This is first launch and a Organic Install');
-        }
-      } else {
-        console.log('This is not first launch');
-      }
-    });
-
-    const AFUDLListener = appsFlyer.onDeepLink(res => {
-      console.log('RES DEEPLINK', res);
-    });
-
     AFInit();
 
     return () => {
-      AFGCDListener();
-      AFUDLListener();
+      installConversionListener();
+      deepLinkListener();
     };
   }, []);
 
   const getStarted = () => {
-    AFLogEvent(AF_clickGetStarted, {
-      af_content_id: 'id123',
-      af_currency: 'USD',
-      af_revenue: '2',
-    });
+    AFLogEvent(AF_clickGetStarted, null);
 
     navigation.navigate('Home');
   };

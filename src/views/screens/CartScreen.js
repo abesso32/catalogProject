@@ -3,18 +3,20 @@ import {SafeAreaView, StyleSheet, View, Text, Image} from 'react-native';
 import {FlatList} from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import COLORS from '../../consts/colors';
-import foods from '../../consts/foods';
 import {PrimaryButton} from '../components/Button';
-import {AFLogEvent, AF_addedToCart, AF_checkout} from '../components/Appsflyer';
+import {AF_checkout} from '../components/Appsflyer';
 import useCartContext from '../../hooks/useCartContext';
+import {useAnalytics} from '@segment/analytics-react-native';
 
 const CartScreen = ({navigation}) => {
+  const {track} = useAnalytics();
   const {
     products,
     totalPrice,
     increasteQuantityProduct,
     decreaseQuantityProduct,
     removeProduct,
+    clearCart,
   } = useCartContext();
 
   const checkout = () => {
@@ -23,7 +25,10 @@ const CartScreen = ({navigation}) => {
         productList: products,
         af_revenue: totalPrice,
       };
-      AFLogEvent(AF_checkout, checkoutValues);
+
+      track(AF_checkout, checkoutValues);
+      clearCart();
+      navigation.goBack();
     }
   };
 
