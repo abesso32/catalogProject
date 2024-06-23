@@ -7,9 +7,11 @@ import {PrimaryButton} from '../components/Button';
 import {AF_checkout} from '../components/Appsflyer';
 import useCartContext from '../../hooks/useCartContext';
 import {useAnalytics} from '@segment/analytics-react-native';
+import {useToast} from 'react-native-toast-notifications';
 
 const CartScreen = ({navigation}) => {
   const {track} = useAnalytics();
+  const toast = useToast();
   const {
     products,
     totalPrice,
@@ -27,6 +29,13 @@ const CartScreen = ({navigation}) => {
       };
 
       track(AF_checkout, checkoutValues);
+      toast.show('Checkout completed', {
+        type: 'success',
+        placement: 'top',
+        duration: 3000,
+        offset: 30,
+        animationType: 'slide-in',
+      });
       clearCart();
       navigation.goBack();
     }

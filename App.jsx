@@ -10,6 +10,7 @@ import OnBoardScreen from './src/views/screens/OnBoardScreen';
 import {CartProvider} from './src/context/CartContext';
 import {AnalyticsProvider, createClient} from '@segment/analytics-react-native';
 import {AppsflyerPlugin} from '@segment/analytics-react-native-plugin-appsflyer';
+import {ToastProvider} from 'react-native-toast-notifications';
 
 const Stack = createStackNavigator();
 
@@ -23,14 +24,16 @@ const App = () => {
   return (
     <NavigationContainer>
       <AnalyticsProvider client={segmentClient}>
-        <CartProvider>
-          <StatusBar backgroundColor={COLORS.white} barStyle="dark-content" />
-          <Stack.Navigator screenOptions={{headerShown: false}}>
-            <Stack.Screen name="BoardScreen" component={OnBoardScreen} />
-            <Stack.Screen name="Home" component={BottomNavigator} />
-            <Stack.Screen name="DetailsScreen" component={DetailsScreen} />
-          </Stack.Navigator>
-        </CartProvider>
+        <ToastProvider>
+          <CartProvider>
+            <StatusBar backgroundColor={COLORS.white} barStyle="dark-content" />
+            <Stack.Navigator screenOptions={{headerShown: false}}>
+              <Stack.Screen name="BoardScreen" component={OnBoardScreen} />
+              <Stack.Screen name="Home" component={BottomNavigator} />
+              <Stack.Screen name="DetailsScreen" component={DetailsScreen} />
+            </Stack.Navigator>
+          </CartProvider>
+        </ToastProvider>
       </AnalyticsProvider>
     </NavigationContainer>
   );

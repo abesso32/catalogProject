@@ -45,7 +45,8 @@ export const CartProvider = ({children}) => {
 
   const totalSum = () => {
     const total = products.reduce(
-      (amount, item) => Number(amount) + Number(item.price),
+      (amount, item) =>
+        Number(amount) + Number(item.price) * Number(item.quantity),
       0,
     );
 

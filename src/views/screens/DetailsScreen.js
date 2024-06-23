@@ -6,14 +6,23 @@ import COLORS from '../../consts/colors';
 import {SecondaryButton} from '../components/Button';
 import {AFLogEvent, AF_addedToCart} from '../components/Appsflyer';
 import useCartContext from '../../hooks/useCartContext';
+import {useToast} from 'react-native-toast-notifications';
 
 const DetailsScreen = ({navigation, route}) => {
   const item = route.params;
+  const toast = useToast();
   const {addToCart} = useCartContext();
 
   const addProductToCart = item => {
     addToCart(item);
     AFLogEvent(AF_addedToCart, item);
+    toast.show('Product added successfully', {
+      type: 'success',
+      placement: 'top',
+      duration: 3000,
+      offset: 30,
+      animationType: 'slide-in',
+    });
   };
 
   return (

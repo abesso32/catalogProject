@@ -32,14 +32,6 @@ const HomeScreen = ({navigation}) => {
     navigation.navigate('DetailsScreen', food);
   };
 
-  const goToCart = () => {
-    let eventValues = {
-      cart_size: foods.length,
-    };
-    AFLogEvent(AF_viewCart, eventValues);
-    navigation.navigate('Cart');
-  };
-
   const ListCategories = () => {
     return (
       <ScrollView
@@ -132,7 +124,7 @@ const HomeScreen = ({navigation}) => {
           </Text>
         </View>
         <Image
-          source={require('../../assets/person.png')}
+          source={require('../../assets/winclap_logo.jpeg')}
           style={{height: 50, width: 50, borderRadius: 25}}
         />
       </View>
