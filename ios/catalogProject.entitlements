@@ -4,7 +4,7 @@
     <dict>
         <key>com.apple.developer.associated-domains</key>
         <array>
-            <string>your_one_link</string>
+            <string>applinks:testwinclap.onelink.me</string>
         </array>
     </dict>
 </plist>

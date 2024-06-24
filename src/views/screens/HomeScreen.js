@@ -1,6 +1,8 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable react/no-unstable-nested-components */
-import React, {useEffect} from 'react';
+import {useEffect, useState} from 'react';
 import {
   Dimensions,
   Image,
@@ -20,12 +22,29 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import COLORS from '../../consts/colors';
 import categories from '../../consts/categories';
 import foods from '../../consts/foods';
-import {AFLogEvent, AF_clickOnItem, AF_viewCart} from '../components/Appsflyer';
+import {AFLogEvent, AF_clickOnItem} from '../components/Appsflyer';
+import useAppContext from '../../hooks/useAppContext';
+import {useToast} from 'react-native-toast-notifications';
 const {width} = Dimensions.get('screen');
 const cardWidth = width / 2 - 20;
 
 const HomeScreen = ({navigation}) => {
-  const [selectedCategoryIndex, setSelectedCategoryIndex] = React.useState(0);
+  const toast = useToast();
+  const {selectedCategory, isFirstTime} = useAppContext();
+  const [selectedCategoryIndex, setSelectedCategoryIndex] =
+    useState(selectedCategory);
+
+  useEffect(() => {
+    if (isFirstTime) {
+      toast.show('Welcome Friend!!', {
+        type: 'warning',
+        placement: 'top',
+        duration: 3000,
+        offset: 30,
+        animationType: 'slide-in',
+      });
+    }
+  }, [isFirstTime]);
 
   const goToDetailScreen = food => {
     AFLogEvent(AF_clickOnItem, food);
@@ -46,7 +65,7 @@ const HomeScreen = ({navigation}) => {
             <View
               style={{
                 backgroundColor:
-                  selectedCategoryIndex == index
+                  selectedCategoryIndex === index
                     ? COLORS.primary
                     : COLORS.secondary,
                 ...style.categoryBtn,
@@ -63,7 +82,7 @@ const HomeScreen = ({navigation}) => {
                   fontWeight: 'bold',
                   marginLeft: 10,
                   color:
-                    selectedCategoryIndex == index
+                    selectedCategoryIndex === index
                       ? COLORS.white
                       : COLORS.primary,
                 }}>

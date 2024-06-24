@@ -1,20 +1,46 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {Text, StyleSheet, View, Image} from 'react-native';
+import appsFlyer from 'react-native-appsflyer';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import COLORS from '../../consts/colors';
 import {PrimaryButton} from '../components/Button';
-import {
-  AFInit,
-  AFLogEvent,
-  AF_clickGetStarted,
-  deepLinkListener,
-  installConversionListener,
-} from '../components/Appsflyer';
+import {AFInit, AFLogEvent, AF_clickGetStarted} from '../components/Appsflyer';
+import useAppContext from '../../hooks/useAppContext';
 
 const OnBoardScreen = ({navigation}) => {
+  const {setIsFirstTime, setSelectedCategory} = useAppContext();
+
   useEffect(() => {
     AFInit();
+
+    const installConversionListener = appsFlyer.onInstallConversionData(res => {
+      if (JSON.parse(res.data.is_first_launch) === true) {
+        setIsFirstTime(true);
+        if (res.data.af_status === 'Non-organic') {
+          var media_source = res.data.media_source;
+          var campaign = res.data.campaign;
+          console.log(
+            'This is first launch and a Non-Organic install. Media source: ' +
+              media_source +
+              ' Campaign: ' +
+              campaign,
+          );
+        } else if (res.data.af_status === 'Organic') {
+          console.log('This is first launch and a Organic Install');
+        }
+      } else {
+        console.log('This is not first launch');
+      }
+    });
+
+    const deepLinkListener = appsFlyer.onDeepLink(res => {
+      if (res?.deepLinkStatus !== 'NOT_FOUND') {
+        const idCategory = res?.data?.deep_link_sub1;
+        setSelectedCategory(Number(idCategory));
+        console.log(JSON.stringify(res?.data, null, 2));
+      }
+    });
 
     return () => {
       installConversionListener();

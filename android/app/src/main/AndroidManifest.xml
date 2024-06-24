@@ -29,8 +29,8 @@
             <category android:name="android.intent.category.DEFAULT" />
             <category android:name="android.intent.category.BROWSABLE" />
             <data
-                android:host="onelink-basic-app.onelink.me"
-                android:pathPrefix="/your_path_prefix"
+                android:host="testwinclap.onelink.me"
+                android:pathPrefix="wRLq"
                 android:scheme="https" />
         </intent-filter>
         
